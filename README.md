@@ -1,113 +1,123 @@
 # 🌾 Tamil Farmer Assistant
 
-An AI-powered, Tamil-language agricultural assistant built for farmers in Jaffna, Sri Lanka. It combines weather information, rule-based crop recommendations, market price snapshots, and an LLM-powered conversational interface to provide practical agricultural guidance in Tamil.
+An AI-powered agricultural assistant designed to help farmers in Jaffna, Sri Lanka, with weather updates, weather forecasts, crop suggestions, market price information, and Tamil-language agricultural support.
 
-Originally developed as a capstone project for the **Kaggle × Google 5-Day AI Agents Intensive Course**.
+## 🚀 Features
 
-## 🚀 Live Demo
+- **Current Weather:** Displays current weather conditions in Jaffna.
+- **4-Day Weather Forecast:** Shows upcoming weather forecasts, temperature ranges, and rain probabilities.
+- **Crop Suggestions:** Provides crop suggestions based on temperature and humidity.
+- **Market Prices:** Displays manually maintained agricultural market prices and trends.
+- **Tamil AI Chatbot:** Answers agricultural questions in simple Tamil.
+- **Forecast-Based Answers:** Uses weather forecast information to answer questions about upcoming rain and farming activities.
 
-[Open Tamil Farmer Assistant](https://tamil-farmer-agent-j3cyzcehjeedshdjfmt3mw.streamlit.app/)
+## 🛠️ Technologies Used
 
-Hosted on Streamlit Community Cloud.
+- Python
+- Streamlit
+- Groq API
+- LLaMA / supported Groq model
+- OpenWeatherMap API
+- Requests
+- python-dotenv
+- Git and GitHub
 
-## ✨ Features
-
-- 🌤️ **Weather Information:** Retrieves weather data for Jaffna using the OpenWeatherMap API.
-- 🌱 **Crop Recommendations:** Suggests suitable crops based on temperature and humidity using rule-based logic.
-- 💰 **Market Price Snapshot:** Displays price information for common crops, including rice, tomato, onion, chilli, banana, and brinjal.
-- 💬 **Tamil Conversational Assistant:** Provides agricultural guidance through an LLM-powered chat interface.
-- 🧩 **Multi-Agent Implementations:** Includes a direct Groq-based conversational agent and a Google ADK multi-tool agent.
-
-## 🛠️ Tech Stack
-
-- **Language:** Python
-- **UI Framework:** Streamlit
-- **LLM API:** Groq API
-- **LLM Model:** OpenAI GPT-OSS 120B
-- **Agent Framework:** Google Agent Development Kit (ADK)
-- **Weather API:** OpenWeatherMap
-- **Environment Configuration:** python-dotenv
-
-## 🏗️ Project Structure
+## 📁 Project Structure
 
 ```text
-Tamil-farmer-agent/
+tamil-farmer-agent/
+│
 ├── app.py
-├── agent.py
-├── adk_agent.py
-├── requirements.txt
-└── tools/
-    ├── weather.py
-    ├── crops.py
-    └── market.py
+├── tools/
+│   ├── weather.py
+│   ├── crops.py
+│   └── market.py
+│
+├── .env
+├── .gitignore
+└── README.md
 ```
 
-- `app.py` – Streamlit application and user interface.
-- `agent.py` – Groq-based conversational agent.
-- `adk_agent.py` – Google ADK agent implementation.
-- `tools/weather.py` – Weather data integration.
-- `tools/crops.py` – Rule-based crop recommendation logic.
-- `tools/market.py` – Market price information.
-
-## 🏃 Getting Started
+## ⚙️ Installation and Setup
 
 ### 1. Clone the repository
 
 ```bash
 git clone https://github.com/abilasha24/Tamil-farmer-agent.git
+```
+
+### 2. Open the project folder
+
+```bash
 cd Tamil-farmer-agent
 ```
 
-### 2. Create a virtual environment
+### 3. Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate it on Windows:
+### 4. Activate the virtual environment
 
-```bash
-venv\Scripts\activate
+**Windows PowerShell:**
+
+```powershell
+.\venv\Scripts\Activate.ps1
 ```
 
-### 3. Install dependencies
+### 5. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install streamlit requests python-dotenv groq
 ```
 
-### 4. Configure environment variables
+## 🔑 Environment Variables
 
-Create a `.env` file in the project root:
+Create a `.env` file in the project root directory.
+
+Add your own API keys:
 
 ```env
-GROQ_API_KEY=your_groq_api_key
 WEATHER_API_KEY=your_openweathermap_api_key
+GROQ_API_KEY=your_groq_api_key
 ```
 
-Never upload real API keys or secrets to GitHub.
+Replace the example values with your actual API keys.
 
-### 5. Run the application
+**Important:** Never upload your `.env` file or expose your API keys on GitHub.
+
+## ▶️ Run the Application
+
+Start the Streamlit application:
 
 ```bash
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
-## 🎯 Project Purpose
+Open the local URL displayed in your terminal, usually:
 
-Farmers in Jaffna, Sri Lanka need accessible agricultural information in their native Tamil language. This project aims to make weather information, crop recommendations, and agricultural guidance easier to access through a conversational AI assistant.
+```text
+http://localhost:8501
+```
 
-## 📌 Project Highlights
+## 🌦️ Weather and Market Data Notes
 
-- Combines external API integration, rule-based logic, and an LLM.
-- Provides a Tamil-language conversational interface.
-- Includes two agent implementations for exploring different AI agent architectures.
-- Deployed using Streamlit Community Cloud.
+- Weather information is retrieved using the weather API.
+- Forecast information is based on available forecast data and may change.
+- Market prices are manually maintained and are not live market prices.
+- Crop suggestions are general recommendations, not guaranteed agricultural outcomes.
 
-## 👩‍💻 Author
+## 🎯 Project Goal
+
+The goal of this project is to make useful weather and agricultural information more accessible to farmers in Jaffna through a simple Tamil-language AI assistant.
+
+## 👩‍💻 Developer
 
 **Abilasha Selvanayakam**
 
-- GitHub: [abilasha24](https://github.com/abilasha24)
-- LinkedIn: [Abilasha Selvanayakam](https://www.linkedin.com/in/abilashaselvanayakam2k06/)
-- Portfolio: [My Portfolio](https://my-portfolio-webapp-ashy.vercel.app/)
+- GitHub: https://github.com/abilasha24
+
+---
+
+*Built with Python, Streamlit, and AI to support Tamil-speaking farmers.*
