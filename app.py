@@ -29,9 +29,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Groq client
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+# Get Groq API Key
+def get_groq_api_key():
+    try:
+        return st.secrets["GROQ_API_KEY"]
+    except Exception:
+        return os.getenv("GROQ_API_KEY")
 
+
+# Groq client
+client = Groq(api_key=get_groq_api_key())
 
 # Title
 st.title("🌾 Tamil Farmer Assistant")

@@ -1,16 +1,25 @@
 
 import requests
 import os
+import streamlit as st
 from dotenv import load_dotenv
 from datetime import datetime, timezone, timedelta
 
 load_dotenv()
 
 
+# Get Weather API Key
+def get_weather_api_key():
+    try:
+        return st.secrets["WEATHER_API_KEY"]
+    except Exception:
+        return os.getenv("WEATHER_API_KEY")
+
+
 # Current weather
 def get_weather(city="Jaffna"):
 
-    api_key = os.getenv("WEATHER_API_KEY")
+    api_key = get_weather_api_key()
 
     if not api_key:
         return {"error": "WEATHER_API_KEY கிடைக்கவில்லை"}
@@ -39,14 +48,16 @@ def get_weather(city="Jaffna"):
 
         return {"error": "Weather data கிடைக்கல"}
 
-    except requests.RequestException as e:
-        return {"error": f"Weather API error: {e}"}
+    except requests.RequestException:
+        return {
+            "error": "Weather API request failed. Check API key and connection."
+        }
 
 
 # 4-day weather forecast
 def get_forecast(city="Jaffna"):
 
-    api_key = os.getenv("WEATHER_API_KEY")
+    api_key = get_weather_api_key()
 
     if not api_key:
         return {"error": "WEATHER_API_KEY கிடைக்கவில்லை"}
@@ -122,10 +133,13 @@ def get_forecast(city="Jaffna"):
             "forecast": forecast
         }
 
-    except requests.RequestException as e:
-        return {"error": f"Forecast API error: {e}"}
+    except requests.RequestException:
+        return {
+            "error": "Forecast API request failed. Check API key and connection."
+        }
 
 
+# Test weather functions
 if __name__ == "__main__":
 
     print("CURRENT WEATHER")
